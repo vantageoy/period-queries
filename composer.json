@@ -1,0 +1,39 @@
+{
+    "name": "vantage/laravel-period-queries",
+    "description": "Query by DatePeriods in Laravel",
+    "license": "MIT",
+    "keywords": [
+        "laravel",
+        "periods",
+        "dates",
+        "eloquent",
+        "db",
+        "query"
+    ],
+    "authors": [
+        {
+            "name": "Jari Pekkala",
+            "email": "jari@vantage.fi"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Vantage\\PeriodQueries\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "orchestra/testbench": "^3.5"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Vantage\\PeriodQueries\\PeriodQueriesServiceProvider"
+            ]
+        }
+    }
+}
