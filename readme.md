@@ -38,8 +38,6 @@ Event::overlaps($period);
 ```
 
 ```php
-use DatePeriod;
-
 $start = new DateTime(2019, 1, 1);
 $end = new DateTime(2019, 1, 31);
 $period = new DatePeriod($start, 'P1D', $end);
