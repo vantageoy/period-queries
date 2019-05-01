@@ -49,12 +49,13 @@ Event::intersects($period);
 
 ```php
 Event::whereTitle($title)->orOverlaps($period);
+```
+
+```php
 Event::whereTitle($title)->orIntersects($period);
 ```
 
-Custom period keys
 ```php
-Todo::overlaps($period, ['start_at', 'end_at']);
 Todo::overlaps($period, ['start_at', 'end_at']);
 ```
 
