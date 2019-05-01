@@ -15,13 +15,13 @@ class PeriodQueriesServiceProvider extends ServiceProvider
     {
         Builder::macro('overlaps', function (CarbonPeriod $range, $boolean = 'and', $keys = []) {
             return $this->whereNested(function ($builder) use ($range, $keys) {
-                call_user_func([Scopes\Overlaps::class, 'scope'], $builder, $range, $keys);
+                Scopes\Overlaps::scope($builder, $range, $keys);
             }, $boolean);
         });
 
         Builder::macro('intersects', function (CarbonPeriod $range, $boolean = 'and', $keys = []) {
             return $this->whereNested(function ($builder) use ($range, $keys) {
-                call_user_func([Scopes\Intersects::class, 'scope'], $builder, $range, $keys);
+                Scopes\Intersects::scope($builder, $range, $keys);
             }, $boolean);
         });
     }
