@@ -2,28 +2,36 @@
 
 namespace Vantage\PeriodQueries\Scopes;
 
-use Carbon\CarbonPeriod;
 use Illuminate\Database\Query\Builder;
 
-class Overlaps
+class Overlaps extends Scope
 {
     /**
      * Scope the query to only include results overlapping the given range.
+     * 
+     * @static
+     * @param  \Illuminate\Database\Query\Builder  $builder
+     * @param  \DatePeriod|\Carbon\CarbonPeriod  $period
+     * @param  array  $keys  ['startKey', 'endKey']
+     * @return void
      */
-    public static function scope(Builder $builder, CarbonPeriod $range, array $keys = [])
+    public static function scope(Builder $builder, $range, array $keys = [])
     {
-        list($start, $end) = count($keys) !== 2 ? ['started_at', 'ended_at'] : $keys;
+        list($startKey, $endKey) = static::keys($keys);
+
+        $start = $range->getStartDate();
+        $end = $range->getEndDate();
 
         // Starts in the range.
-        $builder->where($start, '>', $range->getStartDate())
-                ->where($start, '<', $range->getEndDate());
+        $builder->where($startKey, '>', $start)
+                ->where($startKey, '<', $end);
 
         // Ends in the range
-        $builder->orWhere($end, '>', $range->getStartDate())
-                ->where($end, '<', $range->getEndDate());
+        $builder->orWhere($endKey, '>', $start)
+                ->where($endKey, '<', $end);
 
         // Contains the range
-        $builder->orWhere($start, '<=', $range->getStartDate())
-                ->where($end, '>=', $range->getEndDate());
+        $builder->orWhere($startKey, '<=', $start)
+                ->where($endKey, '>=', $end);
     }
 }

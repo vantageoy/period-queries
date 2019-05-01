@@ -2,20 +2,25 @@
 
 namespace Vantage\PeriodQueries\Scopes;
 
-use Carbon\CarbonPeriod;
 use Illuminate\Database\Query\Builder;
 
-class Intersects
+class Intersects extends Scope
 {
     /**
      * Scope the query to only include results intersecting the given range.
+     * 
+     * @static
+     * @param  \Illuminate\Database\Query\Builder  $builder
+     * @param  \DatePeriod|\Carbon\CarbonPeriod  $period
+     * @param  array  $keys  ['startKey', 'endKey']
+     * @return void
      */
-    public static function scope(Builder $builder, CarbonPeriod $range, array $keys = [])
+    public static function scope(Builder $builder, $period, array $keys = []): void
     {
-        list($start, $end) = count($keys) !== 2 ? ['started_at', 'ended_at'] : $keys;
+        list($startKey, $endKey) = static::keys($keys);
 
-        $builder->overlaps($range, 'and', $keys)
-                ->orWhere($end, $range->getStartDate())
-                ->orWhere($start, $range->getEndDate());
+        $builder->overlaps($period, 'and', $keys)
+                ->orWhere($endKey, $period->getStartDate())
+                ->orWhere($startKey, $period->getEndDate());
     }
 }
