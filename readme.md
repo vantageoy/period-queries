@@ -6,7 +6,7 @@ Adds `overlaps` and `intersects` macros to your Laravel `QueryBuilder`.
 
 ## Installation
 
-Just `composer require vantageoy/period-queries`
+Just `composer require vantage/period-queries`
 
 ## Usage
 
