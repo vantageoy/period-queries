@@ -1,6 +1,6 @@
 # Laravel period queries
 
-Adds `overlaps` and `intersects` macros to your Laravel `QueryBuilder`.
+Adds `overlaps` and `intersects` macros to your `Illuminate\Database\Query\Builder`.
 
 ![Period relations](https://github.com/vantageoy/period-queries/blob/master/PeriodRelations.png)
 
