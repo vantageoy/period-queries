@@ -56,7 +56,7 @@ Event::whereTitle($title)->orIntersects($period);
 ```
 
 ```php
-Todo::overlaps($period, ['start_at', 'end_at']);
+Event::overlaps($period, ['created_at', 'updated_at']);
 ```
 
 ## Contributing
