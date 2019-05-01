@@ -1,13 +1,14 @@
 {
-    "name": "vantage/laravel-period-queries",
-    "description": "Query by DatePeriods in Laravel",
+    "name": "vantage/period-queries",
+    "description": "Query by overlapping and intersecting periods in Laravel",
     "license": "MIT",
     "keywords": [
         "laravel",
         "periods",
         "dates",
+        "overlaps",
+        "intersects",
         "eloquent",
-        "db",
         "query"
     ],
     "authors": [
