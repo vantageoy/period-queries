@@ -43,5 +43,6 @@ class IntersectsMacroTest extends TestCase
 
         $this->assertCount(1, Model::intersects($period)->orWhere('name', 'foo')->get());
         $this->assertCount(1, Model::where('name', 'foo')->intersects($period, 'or')->get());
+        $this->assertCount(1, Model::where('name', 'foo')->orIntersects($period)->get());
     }
 }

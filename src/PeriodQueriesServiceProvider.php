@@ -23,5 +23,13 @@ class PeriodQueriesServiceProvider extends ServiceProvider
                 Scopes\Intersects::scope($builder, $range, $keys);
             }, $boolean);
         });
+
+        Builder::macro('orOverlaps', function ($range, $keys = []) {
+            return $this->overlaps($range, 'or', $keys);
+        });
+
+        Builder::macro('orIntersects', function ($range, $keys = []) {
+            return $this->intersects($range, 'or', $keys);
+        });
     }
 }
