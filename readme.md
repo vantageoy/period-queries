@@ -52,15 +52,10 @@ Event::whereTitle($title)->orOverlaps($period);
 Event::whereTitle($title)->orIntersects($period);
 ```
 
-```php
-Event::whereTitle($title)->overlaps($period, 'or');
-Event::whereTitle($title)->intersects($period, 'or');
-```
-
 Custom period keys
 ```php
-Todo::overlaps($period, null, ['start_at', 'end_at']);
-Todo::overlaps($period, 'and', ['start_at', 'end_at']);
+Todo::overlaps($period, ['start_at', 'end_at']);
+Todo::overlaps($period, ['start_at', 'end_at']);
 ```
 
 ## Contributing

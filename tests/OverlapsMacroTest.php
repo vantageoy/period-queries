@@ -42,7 +42,7 @@ class OverlapsMacroTest extends TestCase
         ]);
 
         $this->assertCount(1, Model::overlaps($period)->orWhere('name', 'foo')->get());
-        $this->assertCount(1, Model::where('name', 'foo')->overlaps($period, 'or')->get());
+        $this->assertCount(1, Model::where('name', 'foo')->overlaps($period, [], 'or')->get());
         $this->assertCount(1, Model::where('name', 'foo')->orOverlaps($period)->get());
     }
 }

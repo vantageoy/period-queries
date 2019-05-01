@@ -19,7 +19,7 @@ class Intersects extends Scope
     {
         list($startKey, $endKey) = static::keys($keys);
 
-        $builder->overlaps($period, 'and', $keys)
+        $builder->overlaps($period, $keys)
                 ->orWhere($endKey, $period->getStartDate())
                 ->orWhere($startKey, $period->getEndDate());
     }
